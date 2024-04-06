@@ -35,7 +35,7 @@ function Login() {
       await setDoc(doc(collection(db, profile.displayName), profile.uid), {
         name: profile.displayName,
       });
-      setErrorEl(null)
+      setErrorEl
       dispatch({ type: "fire/error", payload: null });
     } catch (error) {
       setErrorEl(error.message)
@@ -48,7 +48,6 @@ function Login() {
         {/* <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a> */}
-        {errorEl && <p style={{color: "red"}}>{errorEl}</p>}
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>

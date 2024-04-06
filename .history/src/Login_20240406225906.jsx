@@ -48,7 +48,7 @@ function Login() {
         {/* <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a> */}
-        {errorEl && <p style={{color: "red"}}>{errorEl}</p>}
+        {errorEl && <p style={{co}}></p>}
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>

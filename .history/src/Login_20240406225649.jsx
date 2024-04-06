@@ -12,8 +12,7 @@ import { collection, doc, setDoc } from "firebase/firestore";
 function Login() {
   const dispatch = useDispatch()
   const profile = useSelector((store) => store.fireAuth.user);
-  // const error = useSelector((store) => store.fireAuth.error);
-  const [errorEl, setErrorEl] = useState(null)
+  const e = useSelector((store) => store.fireAuth.error);
   const navigate = useNavigate()
   const provider = new GoogleAuthProvider();
   useEffect(() => {
@@ -35,10 +34,8 @@ function Login() {
       await setDoc(doc(collection(db, profile.displayName), profile.uid), {
         name: profile.displayName,
       });
-      setErrorEl(null)
       dispatch({ type: "fire/error", payload: null });
     } catch (error) {
-      setErrorEl(error.message)
       dispatch({ type: "fire/error", payload: error.message });
     }
   }
@@ -48,7 +45,6 @@ function Login() {
         {/* <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a> */}
-        {errorEl && <p style={{color: "red"}}>{errorEl}</p>}
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
