@@ -5,7 +5,7 @@ function Tabs({profile}) {
   return (
     <div className={styles.tabs}>
       <NavLink to={`/${profile.displayName}/toDoList`}>To-Do List</NavLink>
-      <NavLink to={`/${profile.displayName}/Create`}>Create</NavLink>
+      <NavLink to={`/${profile.displayName}/C`}>Create</NavLink>
     </div>
   );
 }

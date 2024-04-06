@@ -34,7 +34,7 @@ function Profile() {
     <>
       <Nav nav="profile" />
       <section className={styles.navigating}>
-        <Tabs profile={profile}/>
+        <Tabs profile={pro}/>
         <Outlet />
       </section>
     </>

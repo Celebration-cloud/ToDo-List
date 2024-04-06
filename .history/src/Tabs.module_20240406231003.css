@@ -1,0 +1,43 @@
+.tabs{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    background-color: rgb(31, 142, 140);
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 5px;
+}
+.nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.nav a{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    color: aqua;
+}
+.nav .head h3{
+    margin-left: -20px;
+}
+.nav a:hover{
+    color: aqua;
+}
+. :global(.active){
+    color: aqua;
+}
+
+.tabs a {
+    color: azure;
+    text-align: center;
+    border-radius: 20px;
+    width: 100%;
+    padding: 5px;
+}
+.tabs a:hover{
+    color: aliceblue;
+}
