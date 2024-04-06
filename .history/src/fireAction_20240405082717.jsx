@@ -1,0 +1,25 @@
+import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { auth } from "./Client";
+const provider = new GoogleAuthProvider()
+async function fireAuth(dispatch, getState) {
+  try {
+    const data = await signInWithPopup(auth, provider)
+    const user = data.user
+    dispatch({ type: "fire/in", payload: user});
+    dispatch({ type: "fire/error", payload: null });
+  } catch (error) {
+    dispatch({ type: "fire/error", payload: error.message });
+  }
+}
+async function fireAuthOut(dispatch, getState) {
+    try {
+        dispatch({ type: "fire/out", payload: null})
+        signOut(auth);
+        dispatch({ type: "fire/error", payload: null });
+    } catch (error) {
+         dispatch({ type: "fire/error", payload: error.message })
+    }
+}
+out
+export default fireAuth;
+export {fireAuthOut}

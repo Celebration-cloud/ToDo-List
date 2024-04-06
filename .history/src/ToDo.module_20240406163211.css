@@ -1,0 +1,37 @@
+.itemSection{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.item{
+    background-color: rgb(34, 124, 131);
+    align-self: center;
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: small;
+    gap: 5px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-around;
+}
+.inputResult{
+    display: inline-flex;
+    align-self: flex-start;
+    gap: 5px;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+.itemsDes{
+    text-align: left;
+    list-style: none;
+    padding: 0;
+}

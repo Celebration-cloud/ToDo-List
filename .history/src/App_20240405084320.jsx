@@ -1,0 +1,25 @@
+import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Profile from './Profile'
+import Login from './Login'
+import { useEffect } from 'react'
+
+function App() {
+  useEffect
+
+  return (
+     <BrowserRouter>
+          <Routes>
+            <Route path='/Login' element={<Login/>} />
+            <Route path='/' element={''}>
+              <Route index element={<Navigate replace to=':name'/>}/>
+              <Route path=':name' element={<Profile/>} />
+            </Route>
+            
+            <Route path='*' element={<h1>Page Not Found</h1>} />
+          </Routes>
+        </BrowserRouter>
+  )
+}
+
+export default App
