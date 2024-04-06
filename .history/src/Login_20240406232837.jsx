@@ -13,6 +13,7 @@ function Login() {
   const profile = useSelector((store) => store.fireAuth.user);
   // const error = useSelector((store) => store.fireAuth.error);
   const [errorEl, setErrorEl] = useState(null)
+  const [users, setUsers] = useState([])
   const navigate = useNavigate()
   const provider = new GoogleAuthProvider();
   useEffect(() => {

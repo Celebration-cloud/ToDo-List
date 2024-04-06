@@ -13,6 +13,7 @@ function Login() {
   const profile = useSelector((store) => store.fireAuth.user);
   // const error = useSelector((store) => store.fireAuth.error);
   const [errorEl, setErrorEl] = useState(null)
+  const [users, setUsers] = useState([])
   const navigate = useNavigate()
   const provider = new GoogleAuthProvider();
   useEffect(() => {
@@ -30,6 +31,7 @@ function Login() {
       const data = await signInWithPopup(auth, provider);
       const user = data.user;
       navigate(`/${profile.displayName}`)
+      setUsers(user);
       dispatch({ type: "fire/in", payload: user });
       await setDoc(doc(collection(db, user.displayName), user.uid), {
         name: user.displayName,

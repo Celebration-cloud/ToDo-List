@@ -31,8 +31,8 @@ function Login() {
       const user = data.user;
       navigate(`/${profile.displayName}`)
       dispatch({ type: "fire/in", payload: user });
-      await setDoc(doc(collection(db, user.displayName), user.uid), {
-        name: user.displayName,
+      await setDoc(doc(collection(db, profile.displayName), profile.uid), {
+        name: profile.displayName,
       });
       setErrorEl(null)
       dispatch({ type: "fire/error", payload: null });
