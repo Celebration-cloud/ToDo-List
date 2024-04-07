@@ -28,7 +28,7 @@ function Nav({ nav }) {
   return (
     <nav className={styles.nav}>
       <NavLink className={styles.head} to="/">
-        <img src={reactLogo} style={{width: "50px"}} className="logo" alt="React logo" />
+        <img src={reactLogo} sty className="logo" alt="React logo" />
         <h3>To-Do List</h3>
       </NavLink>
       {errorEl && <p>{errorEl}</p>}

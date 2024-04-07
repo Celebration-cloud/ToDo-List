@@ -8,9 +8,13 @@
     background-color: rgb(24, 188, 188);
     color: white;
 }
-
-@media (max-width: 568px) {
-    .navigating{
-        width: 90%;
-    }
+.login{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20%;
+    align-items: center;
+    justify-content: space-around;
+}
+@media (max-with) {
+    
 }

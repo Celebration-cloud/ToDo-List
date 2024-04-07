@@ -10,8 +10,7 @@
 .createForm{
     margin: 0 auto;
     align-self: center;
-    text-align: left;
-    width: 95%;
+    width: 100%;
     display: inline-flex;
     flex-direction: column;
     font-weight: 600;
@@ -38,9 +37,6 @@
     overflow: auto;
 }
 .createButton{
-    padding: 10px;
-    align-self: center;
-    width: 100%;
     color: white;
     display: flex;
     justify-content: center;

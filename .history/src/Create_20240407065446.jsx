@@ -29,6 +29,7 @@ function Create() {
       });
       navigate(`/${users.displayName}/toDoList`);
       formData({ error: null });
+      
     } catch (error) {
       formData({ error: error.message });
     }

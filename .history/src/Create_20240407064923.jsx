@@ -27,8 +27,8 @@ function Create() {
         CreatedAt: serverTimestamp(),
         merge: true,
       });
-      navigate(`/${users.displayName}/toDoList`);
       formData({ error: null });
+      navigate(`/${users.displayName}/toDoList`);
     } catch (error) {
       formData({ error: error.message });
     }
