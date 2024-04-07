@@ -1,0 +1,17 @@
+.navigating{
+    margin: 0 auto;
+    width: 70%;
+    height: 100%;
+    border-radius: 10px;
+}
+.navigating :global(.active){
+    background-color: rgb(24, 188, 188);
+    color: white;
+}
+
+@media (max-width: 568px) {
+    .navigating{
+        width: 90%;
+        padding: 10;
+    }
+}

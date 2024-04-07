@@ -1,0 +1,86 @@
+.content{
+    display: flex;
+    flex-direction: column;
+}
+.itemSection{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.item{
+    background-color: rgb(34, 124, 131);
+    align-self: center;
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: small;
+    gap: 5px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-around;
+}
+.inputResult{
+    display: inline-flex;
+    align-self: flex-start;
+    gap: 5px;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+.itemsDes{
+    text-align: left;
+    list-style: none;
+    padding: 0;
+}
+.group {
+    width: 100%;
+    margin-bottom: 20px;
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+}
+
+.input {
+    
+  width: 100%;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: rgb(34, 124, 131);
+  color: aqua;
+  transition: 0.3s ease;
+}
+
+.input::placeholder {
+  color: #ffffff;
+}
+
+.input:focus,
+input:hover {
+  outline: none;
+  color: black;
+  border-color: rgba(0, 48, 73, 0.4);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(0 48 73 / 10%);
+}
+
+.icon {
+  position: absolute;
+  left: 1rem;
+  fill: aqua;
+  width: 1rem;
+  height: 1rem;
+}
+.
