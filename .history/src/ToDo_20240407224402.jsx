@@ -50,25 +50,22 @@ function ToDo() {
           }
         )
         )}
-        {search.length > 1 &&
+        {search.length > 1 && (
           onSnapshot(
-            query(
-              collection(db, users.displayName),
-              where("Title", "==", search),
-              orderBy("Checked", "asc")
-            ),
-            (snapshot) => {
-              const result = snapshot.docs.map((doc) => ({
-                ...doc.data(),
-                id: doc.id,
-              }));
+          query(collection(db, users.displayName),orderBy("Checked", "asc")),
+          (snapshot) => {
+            const result = snapshot.docs.map((doc) => ({
+              ...doc.data(),
+              id: doc.id,
+            }));
 
-              if (snapshot.empty) throw new Error(`internet error`);
-              setIsLoading(false);
-              setData(result);
-              setErrorEl(null);
-            }
-          );}
+            if (snapshot.empty) throw new Error(`internet error`);
+            setIsLoading(false)
+            setData(result);
+            setErrorEl(null);
+          }
+        )
+        )}
         
         dispatch({
           type: "todo/data",
@@ -117,11 +114,13 @@ function ToDo() {
     }
   }
 
-//   const result = data.filter((item) => {
-//     search.length > 0
-//       ? search.toLowerCase().includes(item.Title.toLowerCase())
-//       : item
-// });
+  const result = data.filter((item) => {
+    setIsLoading(true)
+    search.length > 0
+      ? search.toLowerCase().includes(item.Title.toLowerCase())
+      : item
+    setIsLoading(false)
+});
   
 
 
@@ -149,7 +148,7 @@ function ToDo() {
         {isLoading && <p>Loading...</p>}
         {errorEl && <p>Not Found</p>}
         {status !== "loading" && errorEl && data < 1 && <p>No To-Do List</p>}
-        {data?.map((item) => (
+        {result?.map((item) => (
           <div
             style={
               item.Checked ? { backgroundColor: "aqua", color: "black" } : {}

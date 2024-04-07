@@ -11,7 +11,6 @@ import {
   updateDoc,
   orderBy,
   query,
-  where,
 } from "firebase/firestore";
 import db from "./Client";
 function ToDo() {
@@ -34,8 +33,7 @@ function ToDo() {
     async function data() {
       try {
         setIsLoading(true)
-        {search.length < 1 && (
-          onSnapshot(
+        onSnapshot(
           query(collection(db, users.displayName), orderBy("Checked", "asc")),
           (snapshot) => {
             const result = snapshot.docs.map((doc) => ({
@@ -48,39 +46,17 @@ function ToDo() {
             setData(result);
             setErrorEl(null);
           }
-        )
-        )}
-        {search.length > 1 &&
-          onSnapshot(
-            query(
-              collection(db, users.displayName),
-              where("Title", "==", search),
-              orderBy("Checked", "asc")
-            ),
-            (snapshot) => {
-              const result = snapshot.docs.map((doc) => ({
-                ...doc.data(),
-                id: doc.id,
-              }));
-
-              if (snapshot.empty) throw new Error(`internet error`);
-              setIsLoading(false);
-              setData(result);
-              setErrorEl(null);
-            }
-          );}
-        
+        );
         dispatch({
           type: "todo/data",
           payload: data,
         });
       } catch (error) {
-        setIsLoading(false);
         setErrorEl(error.message);
       }
     }
     data();
-  }, [dispatch, search, users]);
+  }, [dispatch, users]);
 
   function handleEdit(items) {
     navigate(
@@ -116,13 +92,20 @@ function ToDo() {
       dispatch({ type: "todo/error", payload: error });
     }
   }
+  function handleSearch() {
+    try {
+      setIsLoading(true)
+      const result = data.filter(
+    (item) => search.length > 0 ? search.toLowerCase().includes(item.Title.toLowerCase()) : item
+  );
+  setData(result);
+    } catch (error) {
+      
+    }
+  }
 
-//   const result = data.filter((item) => {
-//     search.length > 0
-//       ? search.toLowerCase().includes(item.Title.toLowerCase())
-//       : item
-// });
   
+  console.log(result, data);
 
 
   return (
@@ -134,22 +117,15 @@ function ToDo() {
             <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
           </g>
         </svg>
-        <input
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
-          value={search}
-          className={styles.input}
-          type="search"
-          placeholder="Search"
-        />
+        <input onChange={(e) => setSearch(e.target.value)} className={styles.input} type="search" placeholder="Search" />
       </div>
 
       <section className={styles.itemSection}>
         {isLoading && <p>Loading...</p>}
-        {errorEl && <p>Not Found</p>}
+        {errorEl && <p>{errorEl}</p>}
         {status !== "loading" && errorEl && data < 1 && <p>No To-Do List</p>}
-        {data?.map((item) => (
+        {result?.map((item) => (
+          <>
           <div
             style={
               item.Checked ? { backgroundColor: "aqua", color: "black" } : {}
@@ -215,6 +191,8 @@ function ToDo() {
 
             {item.isEdited && <p>hello</p>}
           </div>
+          </>
+          
         ))}
       </section>
     </div>

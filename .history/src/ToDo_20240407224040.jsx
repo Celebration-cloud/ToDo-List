@@ -50,25 +50,22 @@ function ToDo() {
           }
         )
         )}
-        {search.length > 1 &&
+        {search.length > 1 && (
           onSnapshot(
-            query(
-              collection(db, users.displayName),
-              where("Title", "==", search),
-              orderBy("Checked", "asc")
-            ),
-            (snapshot) => {
-              const result = snapshot.docs.map((doc) => ({
-                ...doc.data(),
-                id: doc.id,
-              }));
+          query(collection(db, users.displayName), where("Title", "==", search),orderBy("Checked", "asc")),
+          (snapshot) => {
+            const result = snapshot.docs.map((doc) => ({
+              ...doc.data(),
+              id: doc.id,
+            }));
 
-              if (snapshot.empty) throw new Error(`internet error`);
-              setIsLoading(false);
-              setData(result);
-              setErrorEl(null);
-            }
-          );}
+            if (snapshot.empty) throw new Error(`internet error`);
+            setIsLoading(false)
+            setData(result);
+            setErrorEl(null);
+          }
+        )
+        )}
         
         dispatch({
           type: "todo/data",
@@ -116,12 +113,6 @@ function ToDo() {
       dispatch({ type: "todo/error", payload: error });
     }
   }
-
-//   const result = data.filter((item) => {
-//     search.length > 0
-//       ? search.toLowerCase().includes(item.Title.toLowerCase())
-//       : item
-// });
   
 
 
