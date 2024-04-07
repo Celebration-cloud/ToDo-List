@@ -8,10 +8,10 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "./Client";
-function Nav({ nav, profile }) {
+function Nav({ nav }) {
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  // const profile = useSelector((store) => store.fireAuth.user);
+  const profile = useSelector((store) => store.fireAuth.user);
   const error = useSelector((store) => store.fireAuth.error);
   const [errorEl] = useState(error);
   

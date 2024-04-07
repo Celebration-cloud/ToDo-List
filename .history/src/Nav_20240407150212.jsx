@@ -11,7 +11,7 @@ import { auth } from "./Client";
 function Nav({ nav, profile }) {
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  // const profile = useSelector((store) => store.fireAuth.user);
+  const profile = useSelector((store) => store.fireAuth.user);
   const error = useSelector((store) => store.fireAuth.error);
   const [errorEl] = useState(error);
   

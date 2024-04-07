@@ -8,10 +8,10 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "./Client";
-function Nav({ nav, profile }) {
+function Nav({ nav }) {
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  // const profile = useSelector((store) => store.fireAuth.user);
+  const profile = useSelector((store) => store.fireAuth.user);
   const error = useSelector((store) => store.fireAuth.error);
   const [errorEl] = useState(error);
   
@@ -27,7 +27,7 @@ function Nav({ nav, profile }) {
 
   return (
     <nav className={styles.nav}>
-      <NavLink className={styles.head} to={`/${profile.displayName}/`}>
+      <NavLink className={styles.head} to={`/${profile.displayName}`}>
         <img src={reactLogo} style={{width: "50px"}} className="logo" alt="React logo" />
         <h3>To-Do List</h3>
       </NavLink>

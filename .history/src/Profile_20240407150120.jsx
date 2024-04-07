@@ -32,9 +32,9 @@ function Profile() {
     // }
   return (
     <>
-      <Nav profile={profile} nav="profile" />
+      <Nav  nav="profile" />
       <section className={styles.navigating}>
-        <Tabs profile={profile} />
+        <Tabs profile={profile}/>
         <Outlet />
       </section>
     </>
