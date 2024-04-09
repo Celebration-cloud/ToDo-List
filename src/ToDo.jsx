@@ -148,7 +148,7 @@ function ToDo() {
       <section className={styles.itemSection}>
         {isLoading && <p>Loading...</p>}
         {errorEl && <p>Not Found</p>}
-        {status !== "loading" && errorEl && data < 1 && <p>No To-Do List</p>}
+        {!isLoading && !errorEl && data < 1 && <p>No To-Do List</p>}
         {data?.map((item) => (
           <div
             style={
